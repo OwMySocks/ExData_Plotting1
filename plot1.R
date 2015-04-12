@@ -8,3 +8,6 @@ file <- "household_power_consumption.txt"
 dt <- read.table(file, header=TRUE, sep=";", na.strings="?")
 dt$Date <- as.Date(dt$Date, format="%d/%m/%Y")
 data <- dt[dt$Date>="2007-02-01" & dt$Date<="2007-02-02",]
+png(filename="plot1.png")
+hist(data$Global_active_power,col="red", xlab="Global Active Power (kilowatts)",yaxp=c(0,1200,5),main="Global Active Power")
+dev.off()

@@ -16,9 +16,9 @@ dt <- read.table(file, header=TRUE, sep=";", na.strings="?")
 dt$dateAsDate <- as.Date(dt$Date, format="%d/%m/%Y")
 data <- dt[dt$dateAsDate>="2007-02-01" & dt$dateAsDate<="2007-02-02",]
 data$DateTime = paste(data$Date,data$Time)
-data$DateTimeProper = strptime(data$DateTime, "%d/%m/%Y%H:%M:%S")
+data$DateTimeFormat = strptime(data$DateTime, "%d/%m/%Y%H:%M:%S")
 
 ##and on to the actual plotting
 png(filename="plot2.png")
-plot(data$DateTimeProper,data$Global_active_power, type = "l", ylab="Global Active Power (kilowatts)",xlab="")
+plot(data$DateTimeFormat,data$Global_active_power, type = "l", ylab="Global Active Power (kilowatts)",xlab="")
 dev.off()
